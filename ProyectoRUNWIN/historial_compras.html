@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mi carrito de compras | Runwin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="main-header">
+    <div class="top-bar">
+        <div class="location">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Cúcuta, Norte de Santander</span>
+        </div>
+
+        <div class="top-options">
+        <span>Es <i class="fa-solid fa-angle-down"></i></span>
+        <span class="divider">|</span>
+        <span>COP <i class="fa-solid fa-angle-down"></i></span>
+        <span class="divider">|</span>
+        <a href="inicio_sesion.html">Iniciar sesión / Registrarse</a>
+        </div>
+    </div>
+
+    <div class="main-menu">
+        <li><a href="index.html"><img src="assets/Logosinfondo.png" alt="Logo Runwin" class="logo-runwin"></a></li>
+
+
+        <div class="search-bar">
+        <input type="text" placeholder="Buscar">
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="header-cart">
+            <li><a href="lista_deseos.html"><i class="fa-regular fa-heart" aria-label="Lista de deseos"></i></a></li>
+            <span class="divider"></span>
+            <div class="cart-info">
+            <div class="cart-icon">
+                <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                <span class="cart-count">7</span>
+            </div>
+            <div class="cart-text">
+                <li><a href="carrito.html"><span class="cart-label">Carrito:</span>
+                <strong class="cart-amount">COP 1’700.000</strong></a></li>
+            </div>
+            </div>
+        </div>
+    </div>
+    </header>
+
+    <!-- MENÚ PRINCIPAL NEGRO -->
+    <nav class="menu-bar">
+    <ul class="menu-items">
+        <a href="#">Hombre <i class="fa-solid fa-angle-down"></i></a>
+        <a href="#">Mujer <i class="fa-solid fa-angle-down"></i></a>
+        <a href="#">Niño <i class="fa-solid fa-angle-down"></i></a>
+        <a href="#">Descuentos <i class="fa-solid fa-angle-down"></i></a>
+        <a href="#">Tips Deportivos <i class="fa-solid fa-angle-down"></i></a>
+
+    </ul>
+    <div class="contacto">
+        <i class="fa-solid fa-phone"></i> 3182493799
+    </div>
+    </nav>
+
+    <!-- BREADCRUMB CON FONDO -->
+    <div class="breadcrumb-section">
+    <div class="breadcrumb-overlay">
+        <nav class="breadcrumb">
+        <a href="#">Cuenta</a> &gt; <span>Historial de Compras</span>
+        </nav>
+    </div>
+    </div>
+
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-container">
+
+        <h2 class="cart-title">Historial de compras</h2>
+
+        <div class="historial-layout">
+
+            <!-- PANEL IZQUIERDO -->
+            <aside class="sidebar">
+            <h3>Navegación</h3>
+            <ul>
+                <li><a href="panel_usuario.html"><i class="fa-solid fa-user"></i> Panel usuario</a></li>
+                <li class="active"><a href="historial_compras.html"><i class="fa-solid fa-rotate-right"></i> Historial de compras</a></li>
+                <li><a href="lista_deseos.html"><i class="fa-regular fa-heart"></i> Lista de deseos</a></li>
+                <li><a href="carrito.html"><i class="fa-solid fa-bag-shopping"></i> Carrito de compras</a></li>
+                <li><a href="#"><i class="fa-solid fa-gear"></i> Configuración</a></li>
+                <li><a href="index.html"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a></li>
+            </ul>
+            </aside>
+
+
+            <!-- TABLA DE HISTORIAL -->
+            <section class="historial-section">
+                <table class="historial-table">
+                    <thead>
+                        <tr>
+                            <th>#Pedido</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#9243</td>
+                            <td>6 Abril, 2023</td>
+                            <td>COP 1’265.000 (2 Productos)</td>
+                            <td>Procesando</td>
+                            <td><a href="#" class="ver-detalles">Ver detalles</a></td>
+                        </tr>
+                        <tr>
+                            <td>#9034</td>
+                            <td>27 Marzo, 2023</td>
+                            <td>COP 520.000 (1 Producto)</td>
+                            <td>Entregado</td>
+                            <td><a href="#" class="ver-detalles">Ver detalles</a></td>
+                        </tr>
+                        <tr>
+                            <td>#8630</td>
+                            <td>19 Marzo, 2023</td>
+                            <td>COP 758.000 (2 Productos)</td>
+                            <td>Entregado</td>
+                            <td><a href="#" class="ver-detalles">Ver detalles</a></td>
+                        </tr>
+                        <tr>
+                            <td>#8415</td>
+                            <td>9 Marzo, 2023</td>
+                            <td>COP 178.000 (1 Producto)</td>
+                            <td>Entregado</td>
+                            <td><a href="#" class="ver-detalles">Ver detalles</a></td>
+                        </tr>
+                        <tr>
+                            <td>#8146</td>
+                            <td>28 Febrero, 2023</td>
+                            <td>COP 999.000 (3 Productos)</td>
+                            <td>Entregado</td>
+                            <td><a href="#" class="ver-detalles">Ver detalles</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- PAGINACIÓN -->
+                <div class="pagination">
+                    <a href="#">&laquo;</a>
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">&raquo;</a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+   <!-- FOOTER (sección de suscripción + footer oscuro con columnas) -->
+    <footer class="footer-full">
+        <!-- Sección de suscripción (parte superior del footer) -->
+        <div class="subscribe-bar">
+            <div class="subscribe-text">
+                <h4>Suscríbete a nosotros</h4>
+                <p>Te enviaremos ofertas e información especial relacionada con todos los artículos de tu interés.</p>
+            </div>
+
+            <div class="subscribe-form">
+                <input type="email" placeholder="Tu correo electrónico" aria-label="Correo">
+                <button>Suscribirse</button>
+            </div>
+
+            <div class="subscribe-social">
+            <a href="#" aria-label="facebook">
+                <img src="assets/facebook.png" alt="Facebook" class="icono-red">
+            </a>
+            <a href="#" aria-label="twitter">
+                <img src="assets/twitter.png" alt="Twitter" class="icono-red">
+            </a>
+            <a href="#" aria-label="pinterest">
+                <img src="assets/pinterest.png" alt="Pinterest" class="icono-red">
+            </a>
+            <a href="#" aria-label="instagram">
+                <img src="assets/instagram.png" alt="Instagram" class="icono-red">
+            </a>
+            </div>
+        </div>
+
+        <!-- Footer oscuro principal con columnas -->
+        <div class="footer-dark">
+            <div class="footer-container">
+                <div class="footer-col brand">
+                    <!-- Logo (reemplaza con tu imagen) -->
+                    <img src="assets/Logo_negro.png" alt="Runwin" class="footer-logo">
+                    <p class="brand-text">
+                        En Runwin creemos que cada paso es una oportunidad para superarte; por eso te ofrecemos el mejor equipamiento para acompañarte en tu camino hacia la meta.
+                    </p>
+                </div>
+
+                   <div class="footer-col">
+                    <h5>Mi cuenta</h5>
+                    <ul>
+                        <li><a href="panel_usuario.html">Mi cuenta</a></li>
+                        <li><a href="historial_compras.html">Historial de compras</a></li>
+                        <li><a href="carrito.html">Carrito de compras</a></li>
+                        <li><a href="lista_deseos.html">Lista de deseos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Ayuda</h5>
+                    <ul>
+                        <li><a href="#">Contáctanos</a></li>
+                        <li><a href="#">Faqs</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Proxy</h5>
+                    <ul>
+                        <li><a href="#">Acerca</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Rastrear pedido</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Categorías</h5>
+                    <ul>
+                        <li><a href="#">Hombre</a></li>
+                        <li><a href="#">Mujer</a></li>
+                        <li><a href="#">Niño</a></li>
+                        <li><a href="#">Descuentos</a></li>
+                        <li><a href="#">Tips deportivos</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Barra inferior con derechos y logos de pago -->
+            <div class="footer-bottom">
+                <p>RunWin © 2025 | Inspira tu carrera, alcanza tu meta</p>
+
+                <div class="payment-logos">
+                    <!-- Reemplaza por imágenes de los métodos de pago -->
+                     <img src="assets/apple.png" alt="Apple Pay"> 
+                     <img src="assets/Visa.png" alt="Visa"> 
+                     <img src="assets/mastercard.png" alt="Mastercard"> 
+                     <img src="assets/safe.png" alt="Safe Payment"> 
+                   <!-- <span class="mock-pay">[logos de pago aquí]</span> -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

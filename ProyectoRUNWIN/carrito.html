@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mi carrito de compras | Runwin</title>
+    <link rel="stylesheet" href="style_carrito.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="top-bar">
+        <div class="location">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Cúcuta, Norte de Santander</span>
+        </div>
+
+        <div class="top-options">
+            <span>Es <i class="fa-solid fa-angle-down"></i></span>
+            <span class="divider">|</span>
+            <span>COP <i class="fa-solid fa-angle-down"></i></span>
+            <span class="divider">|</span>
+            <a href="inicio_sesion.html">Iniciar sesión</a> <span>/</span> <a href="crear_cuenta.html">Registrarse</a>
+
+        </div>
+        </div>
+
+        <div class="main-menu">
+        <li><a href="index.html"><img src="assets/Logosinfondo.png" alt="Logo Runwin" class="logo-runwin"></a></li>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar" aria-label="Buscar producto">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="header-cart">
+            <li><a href="lista_deseos.html"><i class="fa-regular fa-heart" aria-label="Lista de deseos"></i></a></li>
+            <span class="divider"></span>
+            <div class="cart-info">
+            <div class="cart-icon">
+                <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+                <span class="cart-count">7</span>
+            </div>
+            <div class="cart-text">
+                <li><a href="carrito.html"><span class="cart-label">Carrito:</span>
+                <strong class="cart-amount">COP 1’700.000</strong></a></li>
+            </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- MENÚ PRINCIPAL NEGRO -->
+    <nav class="menu-bar">
+    <ul class="menu-items">
+        <a href="#">Hombre <i class="fa-solid fa-angle-down"></i></a>
+        <a href="#">Mujer <i class="fa-solid fa-angle-down"></i></a>
+        <a href="#">Niño <i class="fa-solid fa-angle-down"></i></a>
+        <a href="#">Descuentos <i class="fa-solid fa-angle-down"></i></a>
+        <a href="#">Tips Deportivos <i class="fa-solid fa-angle-down"></i></a>
+
+    </ul>
+    <div class="contacto">
+        <i class="fa-solid fa-phone"></i> 3182493799
+    </div>
+    </nav>
+
+    <!-- BREADCRUMB CON FONDO -->
+    <div class="breadcrumb-section">
+    <div class="breadcrumb-overlay">
+        <nav class="breadcrumb">
+        <a href="#">Cuenta</a> &gt; <span>Carrito de compras</span>
+        </nav>
+    </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-container">
+        <h2 class="cart-title">Mi carrito de compras</h2>
+
+        <section class="cart-section">
+            <table class="cart-table" aria-label="Carrito">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-product-id="1">
+                        <td class="product-info">
+                            <!-- Imagen del producto -->
+                            <img src="assets/productos/Zapatillas de Tenis para Caballero The Roger Pro Clay.jpeg" alt="Zapatos" class="product-img"> 
+                            <div class="product-text">
+                                <strong>Zapatillas de Tenis para Caballero The Roger Pro Clay</strong><br>
+                                <small>Talla: 10 EUR</small>
+                            </div>
+                        </td>
+                        <td class="price">COP 800.000</td>
+                        <td class="qty-cell">
+                            <button class="qty-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity">2</span>
+                            <button class="qty-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </td>
+                            <td class="subtotal">
+                            <span class="subtotal-value">COP 1.600.000</span>
+                            <button class="remove-item" onclick="removeItem(this)">✕</button>
+                            </td>
+                        
+                    </tr>
+
+                    <tr data-product-id="2">
+                        <td class="product-info">
+                            <!-- Imagen del producto -->
+                            <img src="assets/productos/Gorra Visera Deporte unisex.jpeg" alt="Gorra" class="product-img">
+                            <div class="product-text">
+                                <strong>Gorra Visera Deporte unisex</strong>
+                            </div>
+                        </td>
+                        <td class="price">COP 20.000</td>
+                        <td class="qty-cell">
+                            <div class="qty-wrapper"></div>
+                            <button class="qty-btn" onclick="changeQuantity(this, -1)">-</button>
+                            <span class="quantity">5</span>
+                            <button class="qty-btn" onclick="changeQuantity(this, 1)">+</button>
+                        </td>
+                            </div>
+                        <td class="subtotal">
+                        <span class="subtotal-value">COP 100.000</span>
+                        <button class="remove-item" onclick="removeItem(this)">✕</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <aside class="cart-summary">
+                <h3>Cart Total</h3>
+                <div class="summary-row"><span>Subtotal:</span><span id="subtotal">COP 1.700.000</span></div>
+                <div class="summary-row"><span>Shipping:</span><strong>GRATIS</strong></div>
+                <div class="summary-row total"><span>Total:</span><span id="total">COP 1.700.000</span></div>
+                <li><a href="checkout.html"><button  class="checkout-btn">Procesar pago</button></a></li>
+            </aside>
+
+            <div class="cart-actions">
+            <button class="back-btn"><strong>Volver a la tienda</strong></button>
+            <button class="update-btn"><strong>Actualizar pago</strong></button>
+            </div>
+        </section>
+
+        <div class="coupon-section">
+            <label for="coupon"><strong>Código cupón</strong></label>
+            <input id="coupon" type="text" placeholder="Código cupón">
+            <button id="apply-coupon">Aplicar cupón</button>
+        </div>
+    </main>
+
+    <!-- FOOTER (sección de suscripción + footer oscuro con columnas) -->
+    <footer class="footer-full">
+        <!-- Sección de suscripción (parte superior del footer) -->
+        <div class="subscribe-bar">
+            <div class="subscribe-text">
+                <h4>Suscríbete a nosotros</h4>
+                <p>Te enviaremos ofertas e información especial relacionada con todos los artículos de tu interés.</p>
+            </div>
+
+            <div class="subscribe-form">
+                <input type="email" placeholder="Tu correo electrónico" aria-label="Correo">
+                <button>Suscribirse</button>
+            </div>
+
+            <div class="subscribe-social">
+            <a href="#" aria-label="facebook">
+                <img src="assets/facebook.png" alt="Facebook" class="icono-red">
+            </a>
+            <a href="#" aria-label="twitter">
+                <img src="assets/twitter.png" alt="Twitter" class="icono-red">
+            </a>
+            <a href="#" aria-label="pinterest">
+                <img src="assets/pinterest.png" alt="Pinterest" class="icono-red">
+            </a>
+            <a href="#" aria-label="instagram">
+                <img src="assets/instagram.png" alt="Instagram" class="icono-red">
+            </a>
+            </div>
+        </div>
+
+        <!-- Footer oscuro principal con columnas -->
+        <div class="footer-dark">
+            <div class="footer-container">
+                <div class="footer-col brand">
+                    <!-- Logo (reemplaza con tu imagen) -->
+                    <img src="assets/Logo_negro.png" alt="Runwin" class="footer-logo">
+                    <p class="brand-text">
+                        En Runwin creemos que cada paso es una oportunidad para superarte; por eso te ofrecemos el mejor equipamiento para acompañarte en tu camino hacia la meta.
+                    </p>
+                </div>
+
+                   <div class="footer-col">
+                    <h5>Mi cuenta</h5>
+                    <ul>
+                        <li><a href="panel_usuario.html">Mi cuenta</a></li>
+                        <li><a href="historial_compras.html">Historial de compras</a></li>
+                        <li><a href="carrito.html">Carrito de compras</a></li>
+                        <li><a href="lista_deseos.html">Lista de deseos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Ayuda</h5>
+                    <ul>
+                        <li><a href="#">Contáctanos</a></li>
+                        <li><a href="#">Faqs</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Proxy</h5>
+                    <ul>
+                        <li><a href="#">Acerca</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Rastrear pedido</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Categorías</h5>
+                    <ul>
+                        <li><a href="#">Hombre</a></li>
+                        <li><a href="#">Mujer</a></li>
+                        <li><a href="#">Niño</a></li>
+                        <li><a href="#">Descuentos</a></li>
+                        <li><a href="#">Tips deportivos</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Barra inferior con derechos y logos de pago -->
+            <div class="footer-bottom">
+                <p>RunWin © 2025 | Inspira tu carrera, alcanza tu meta</p>
+
+                <div class="payment-logos">
+                    <!-- Reemplaza por imágenes de los métodos de pago -->
+                     <img src="assets/apple.png" alt="Apple Pay"> 
+                     <img src="assets/Visa.png" alt="Visa"> 
+                     <img src="assets/mastercard.png" alt="Mastercard"> 
+                     <img src="assets/safe.png" alt="Safe Payment"> 
+                   <!-- <span class="mock-pay">[logos de pago aquí]</span> -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <style>/* ===========================
+   RESET Y CONFIGURACIÓN BASE
+   =========================== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f5f6f7;
+  color: #222;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===========================
+   BARRA SUPERIOR (ubicación/usuario)
+   =========================== */
+.top-header {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 36px;
+  font-size: 14px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.top-header .location { color:#6b6b6b; display:flex; align-items:center; gap:8px; }
+.top-header .header-right { display:flex; gap:18px; align-items:center; color:#333; }
+.top-header .header-right a { text-decoration:none; color:#333; font-weight:500; }
+
+/* General */
+.main-header {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+/* Barra superior */
+/* --- Línea de separación debajo de la barra superior --- */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 40px;
+  border-bottom: 1px solid #dcdcdc; /* línea de separación */
+}
+
+.top-bar i {
+  color: #666;
+  margin-right: 6px;
+}
+
+.top-options span {
+  margin: 0 6px;
+  cursor: pointer;
+}
+
+.top-options a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Menú principal */
+.main-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+}
+
+.logo-runwin {
+  height: 70px;
+}
+
+/* Barra de búsqueda */
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  width: 550px;
+  padding: 12px 18px;
+  border: 1px solid #ddd;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+}
+
+.search-bar button {
+  background-color: #4a5be6;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+}
+
+/* Carrito */
+.cart-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.cart-section i {
+  font-size: 18px;
+  color: #000;
+}
+
+.cart-section strong {
+  color: #000;
+  font-weight: 600;
+}
+
+
+/* ===========================
+   NAV PRINCIPAL (logo - buscador - íconos)
+   =========================== */
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;     /* elimina el padding vertical */
+  height: 100px;       /* altura total de la barra blanca */
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+
+/* Contenedor del logo */
+.logo {
+  height: 100%;               /* ocupa toda la altura del header */
+  display: flex;
+  align-items: center;
+}
+
+/* Imagen del logo */
+.logo-runwin {
+  height: 70px;               /* tamaño visible del logo */
+  width: auto;
+  object-fit: contain;
+}
+
+
+
+/* centro: buscador redondeado */
+.search-bar {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin: 0 auto;            /* centra el buscador en nav */
+  max-width: 700px;
+  width: 50%;
+  justify-content:center;
+}
+.search-bar input {
+  width: 70%;
+  min-width: 260px;
+  padding: 10px 16px;
+  border-radius: 28px;
+  border: 1px solid #ddd;
+  background: #fff;
+  outline: none;
+  font-size: 14px;
+}
+.search-bar button {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #4a5ad7;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(74,90,215,0.18);
+}
+
+/* íconos/acciones a la derecha */
+.nav-icons { display:flex; gap:16px; align-items:center; }
+.nav-icons a { color:#111; text-decoration:none; font-weight:600; display:flex; align-items:center; gap:8px; }
+
+/* ===========================
+   BARRA DE MENÚ (oscura)
+   =========================== */
+.menu-bar {
+  background: #222;
+  border-top: 1px solid rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px; /* agrega espacio lateral para respirar */
+}
+
+/* lista principal */
+.menu-bar ul {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  margin: 0;
+  color: #ccc; /* cambia el color aquí */
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* ítems del menú */
+.menu-bar li {
+  position: relative;
+  cursor: pointer;
+  color: #ccc;
+  text-decoration: none;
+}
+
+/* elimina el subrayado de cualquier enlace */
+.menu-bar a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.menu-bar li:hover {
+  color: #fff;
+}
+
+/* elimina las flechitas (opcional) o cámbiales color */
+.menu-bar li::after {
+  content: "";
+}
+
+/* teléfono a la derecha con espacio */
+.contacto {
+  margin-left: auto;
+  color: #ccc;
+  padding-right: 40px; /* separa del borde derecho */
+}
+.menu-items a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menu-items a:hover {
+  color: #fff;
+}
+
+/* hover */
+.menu-bar li:hover { color:#8fb4ff; }
+
+/* ===========================
+   BREADCRUMB
+   =========================== */
+.breadcrumb {
+  padding: 12px 40px;
+  background: #f4f5f6;
+  font-size: 13px;
+  color: #666;
+}
+.breadcrumb a { color:#4a5ad7; text-decoration:none; margin-right:6px; }
+
+/* --- Breadcrumb con fondo e imagen --- */
+.breadcrumb-section {
+  background-image: url("assets/fondozapatos.png");
+  background-size: cover;
+  background-position: center -125px; /* mueve la imagen hacia arriba */
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: left; /* o center si prefieres */
+  padding-left: 100px; /* ajusta la posición del texto */
+}
+
+.breadcrumb-overlay {
+  background: transparent; /* sin fondo oscuro */
+}
+
+.breadcrumb {
+  background: none; /* elimina el fondo gris anterior dentro de esta sección */
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.breadcrumb a {
+  color: #6ab1ff;
+  text-decoration: none;
+}
+
+.breadcrumb span {
+  color: white;
+}
+
+/* Quitar espacios arriba del breadcrumb */
+.breadcrumb-section {
+  margin-top: 0;
+  padding-top: 0;
+}
+header, body {
+  margin: 0;
+  padding: 0;
+}
+/* ===========================
+   CONTENIDO PRINCIPAL (carrito)
+   =========================== */
+.main-container {
+  max-width: 1450px;
+  margin: 22px auto;
+  background: #fff;
+  padding: 22px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(18,18,18,0.04);
+  border: 2px solid #d0d0d0;
+}
+
+/* título */
+.main-container h2 {
+  font-size: 26px;
+  margin-bottom: 18px;
+  color:#1d1d1d;
+}
+
+/* layout: tabla + resumen */
+.cart-section {
+  display:flex;
+  gap:22px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+
+/* tabla estilo limpio */
+.cart-table {
+  width: 68%;
+  border-collapse: collapse;
+}
+.cart-table thead th {
+  text-align:left;
+  font-size:13px;
+  color:#666;
+  padding:12px 8px;
+  text-transform:uppercase;
+  letter-spacing:0.6px;
+}
+
+.cart-table tr {
+  border-bottom: 1px solid #ddd; /* línea sutil debajo de cada producto */
+}
+
+.cart-table td {
+  padding: 22px 8px; /* aumenta el espacio vertical entre productos */
+  vertical-align: middle;
+}
+
+/* opcional: da un poco más de "aire" visual entre filas */
+.cart-table tr:not(:last-child) {
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-table tbody tr {
+  border-spacing: 0 10px; /* separa ligeramente las filas */
+}
+
+
+/* info producto */
+.product-info { display:flex; gap:12px; align-items:center; }
+.product-img { width:72px; height:72px; object-fit:cover; border-radius:8px; }
+.product-text strong { display:block; font-size:15px; margin-bottom:6px; color:#111; }
+.product-text small { color:#7a7a7a; font-size:13px; }
+.product-text {
+  max-width: 250px; /* ajusta este valor según el tamaño que quieras */
+  word-wrap: break-word;
+  white-space: normal; /* asegura que el texto salte de línea */
+}
+
+/* columnas: precio, cantidad, subtotal */
+.cart-table .price, .cart-table .subtotal { width:150px; text-align:left; padding-right:12px; white-space: nowrap;}
+.cart-table .qty-cell { width:130px; text-align:center;  position: relative;
+  top: -30px;}
+
+.cart-table .qty-btn {
+  width: 28px;          /* tamaño del círculo */
+  height: 28px;
+  border-radius: 50%;   /* lo hace circular */
+  display: flex;        /* centra el contenido */
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;      /* tamaño del signo + o - */
+  line-height: 1;       /* evita que se desplace hacia arriba o abajo */
+  padding: 0;           /* elimina espacios internos */
+}
+
+
+.cart-table .price {
+  transform: translateX(-68px); /* mueve todo un poco a la izquierda */
+}
+.cart-table th:nth-child(2){
+  transform: translateX(-62px); /* mueve todo un poco a la izquierda */
+}
+.cart-table th:nth-child(3){
+  transform: translateX(-28px); /* mueve todo un poco a la izquierda */
+}
+.cart-table .qty-cell {
+  transform: translateX(-45px); /* mueve todo un poco a la izquierda */
+}
+.cart-table th:nth-child(4){
+  transform: translateX(-45px); /* mueve todo un poco a la izquierda */
+}
+.cart-table .subtotal{
+  transform: translateX(-60px); /* mueve todo un poco a la izquierda */
+}
+
+/* botones de cantidad */
+.qty-cell { display:inline-flex; align-items:center; gap:8px; justify-content:center; }
+.qty-btn {
+  background:#f1f1f1; border:1px solid #e0e0e0; padding:6px 10px; border-radius:6px; cursor:pointer;
+  font-weight:700;
+}
+.quantity { min-width:26px; text-align:center; display:inline-block; font-weight:600; }
+
+/* resumen lateral */
+
+.cart-summary {
+  width: 30%;
+  background: #fafafa;
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  align-self: flex-start;
+  border: 2px solid #d0d0d0;
+}
+
+.cart-summary h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #222;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0; /* línea divisoria sutil */
+}
+
+/* Elimina la línea debajo del total */
+.summary-row.total {
+  border-bottom: none;
+  font-weight: 600;
+  color: #000;
+}
+
+.checkout-btn {
+  width: 100%;
+  background: #007bff;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 0;
+  margin-top: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.checkout-btn:hover {
+  background: #005fe0;
+}
+
+.cart-summary h3 { margin-bottom:12px; font-size:18px; }
+.summary-row { display:flex; justify-content:space-between; margin-bottom:10px; color:#333; font-size:15px; }
+.summary-row strong { color:#111; }
+.summary-row.total { font-weight:800; font-size:17px; margin-top:8px; }
+.checkout-btn {
+  width:100%; background:#007bff; color:#fff; border:none; padding:12px; border-radius:8px; cursor:pointer; margin-top:12px;
+  font-weight:700; font-size: 17px;;
+}
+
+/* cupón */
+.coupon-section { margin-top:20px; display:flex; gap:8px; align-items:center; justify-content:flex-start; }
+.coupon-section input { padding:10px 12px; border-radius:25px; border:1px solid #ddd; width:550px; }
+.coupon-section button { padding:10px 12px; border-radius:25px; border:none; background:#111; color:#fff; cursor:pointer; width:120px; height: 41px; }
+.cart-actions button { padding:10px 12px; border-radius:25px; border:none; background:#f3efef; color:#918f8f; cursor:pointer; width:170px; height: 41px;}
+.update-btn {
+  background-color: #dc3545; /* rojo */
+  margin-left: 600px; /* ajusta este valor */
+}
+/* ===========================
+   FOOTER (suscripción blanca + footer oscuro)
+   =========================== */
+.footer-full { margin-top:28px; }
+
+/* barra de suscripción (blanca) */
+.subscribe-bar {
+  background:#fff;
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
+  padding:22px 60px;
+  display:flex;
+  gap:20px;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.subscribe-text { max-width:600px; }
+.subscribe-text h4 { font-size:18px; margin-bottom:6px; color:#111; }
+.subscribe-text p { color:#6b6b6b; font-size:13px; }
+.subscribe-form { display:flex; gap:10px; align-items:center; }
+.subscribe-form input { padding:10px 12px; border-radius:999px; border:1px solid #ddd; width:240px; }
+.subscribe-form button { padding:10px 16px; border-radius:999px; border:none; background:#2f80ed; color:#fff; cursor:pointer; }
+.subscribe-social a { margin-left:8px; display:inline-block; padding:8px 10px; background:#f2f2f2; color:#333; border-radius:6px; text-decoration:none; font-weight:700; }
+
+
+/* footer oscuro principal */
+.footer-dark {
+  background:#000000;
+  color:#ddd;
+  padding:36px 60px;
+}
+.footer-container {
+  display:grid;
+  grid-template-columns: 220px repeat(4, 1fr);
+  gap:28px;
+  align-items:start;
+  max-width:1200px;
+  margin:0 auto;
+}
+.brand img { height:46px; margin-bottom:12px; display:block; }
+.brand p { color:#bdbdbd; font-size:13px; line-height:1.6; max-width:220px; }
+
+/* secciones de enlaces */
+.footer-col h5 { color:#fff; margin-bottom:10px; font-size:15px; }
+.footer-col ul { list-style:none; padding:0; }
+.footer-col li { margin-bottom:8px; }
+.footer-col a { color:#cfcfcf; text-decoration:none; font-size:13px; }
+.footer-col a:hover { color:#fff; }
+
+/* barra inferior */
+.footer-bottom {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-top:1px solid rgba(255,255,255,0.04);
+  padding:16px 60px;
+  color:#9a9a9a;
+  font-size:13px;
+}
+
+/* logos de pago (ajústalos en HTML con <img>) */
+.payment-logos img { height:30px; margin-left:15px; display:inline-block; }
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 1000px) {
+  .search-bar { width: 60%; }
+  .cart-table { width: 100%; }
+  .cart-summary { width: 100%; margin-top: 16px; }
+  .footer-container { grid-template-columns: 1fr 1fr; }
+  .subscribe-bar { padding:18px; }
+}
+
+@media (max-width: 520px) {
+  .top-header, .main-nav, .menu-bar, .breadcrumb, .subscribe-bar, .footer-dark, .footer-bottom {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .search-bar input { width: 140px; }
+  .menu-bar ul { gap:12px; font-size:13px; flex-wrap:wrap; }
+  .footer-container { grid-template-columns: 1fr; gap:18px; }
+}
+/*logos de redes sociales */
+
+.icono-red {
+  width: 24px;     /* tamaño del ícono dentro del cuadro */
+  height: 24px;
+  object-fit: contain;
+}
+
+.icono-red:hover {
+  transform: scale(1.2); /* efecto al pasar el mouse */
+}
+.subscribe-social a:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.1);
+}
+.subscribe-social {
+  display: flex;
+  gap: 10px; /* espacio entre los cuadros */
+}
+
+.subscribe-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;          /* tamaño del recuadro */
+  height: 45px;
+  background-color: #f3f3f3; /* color del fondo */
+  border-radius: 8px;        /* bordes redondeados */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cart-title {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: 700;
+}
+/* === HEADER CART (aislado del carrito principal) === */
+.header-cart {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 16px;
+}
+
+.header-cart i {
+  font-size: 22px;
+  color: #000;
+}
+
+.header-cart .divider {
+  width: 1px;
+  height: 30px;
+  background-color: #ccc;
+  display: inline-block;
+}
+
+.header-cart .cart-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-cart .cart-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.header-cart .cart-label {
+  font-size: 13px;
+  color: #444;
+}
+
+.header-cart .cart-amount {
+  font-size: 15px;
+  font-weight: 700;
+  color: #000;
+}
+
+/* Contador azul */
+.header-cart .cart-icon {
+  position: relative;
+}
+
+.header-cart .cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.subtotal {
+  position: relative;
+  text-align: right;
+  white-space: nowrap;
+  font-weight: bold;
+  color: #222;
+}
+
+/* Botón eliminar */
+.remove-item {
+  position: absolute;
+  right: -28px; /* Ajusta según el ancho de tu tabla */
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffffff;
+  border: 2px solid #6f6f6f; /* ✅ borde gris oscuro */
+  color: #6f6f6f;
+  font-size: 15px;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex; /* centra el símbolo */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease, border-color 0.25s ease;
+  line-height: 1;
+}
+
+.remove-item:hover {
+  background: #f0f0f0;
+  border-color: #505050; /* un poco más oscuro al pasar el mouse */
+  transform: translateY(-50%) scale(1.1);
+}
+
+</style>
+</body>
+</html>
