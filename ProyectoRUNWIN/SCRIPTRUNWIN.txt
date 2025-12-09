@@ -1,0 +1,195 @@
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    correo VARCHAR(255) NOT NULL UNIQUE,
+    contrasena VARCHAR(255) NOT NULL,
+    rol VARCHAR(255) NOT NULL CHECK (rol IN ('ADMIN','CLIENTE')),
+    direccion VARCHAR(255),
+    telefono VARCHAR(255),
+    foto VARCHAR(255),
+    activo BOOLEAN DEFAULT TRUE,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+INSERT INTO usuarios (id, nombre, correo, contrasena, rol, direccion, telefono, foto, creado_en) VALUES
+(4,'Administrador Runwin','admin@runwin.com','admin123','ADMIN','Oficinas Runwin, Cúcuta','3200000000','imagenes/user_login/admin.jpg','2025-11-30 17:39:37.078625'),
+(5,'Luisa Pérez','lu@gmail.com','123','CLIENTE',NULL,NULL,NULL,'2025-12-02 10:21:26.095722'),
+(6,'Fabrizzio Morales','fabvela@correo.com','12345','CLIENTE','Calle 6 N 8-53 Barrio Centro, Cúcuta','3132456788','user_6_user4.jpg','2025-12-04 17:08:38.940216'),
+(2,'Brandon Martínez','brandon@correo.com','12345','CLIENTE','Av. 3 #15-20 Centro, Cúcuta','3125568991','imagenes/user2.jpg','2025-11-30 17:39:37.078625'),
+(3,'Valentina Muñoz','valentina@correo.com','12345','CLIENTE','Calle 8 #7-22 Barrio Blanco, Cúcuta','3209981122','imagenes/user3.jpg','2025-11-30 17:39:37.078625'),
+(1,'Daniela Martinez','daniela@correo.com','12345','CLIENTE','Calle 12 #4-18 Barrio Aereopuerto, Cúcuta','31524325666','user_1_snoopy.jfif','2025-11-30 17:39:37.078625');
+
+CREATE TABLE categorias (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL
+);
+INSERT INTO categorias (id, nombre) VALUES
+(1,'Hombre'),
+(2,'Mujer'),
+(3,'Niño'),
+(4,'Implementos deportivos'),
+(5,'Accesorios'),
+(6,'Descuentos');
+CREATE TABLE productos (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    precio INT NOT NULL,
+    categoria_id INT REFERENCES categorias(id),
+    descripcion VARCHAR(255),
+    imagen VARCHAR(255)
+);
+
+INSERT INTO productos (id, nombre, precio, categoria_id, descripcion, imagen) VALUES
+(1,'Tenis Running AirMax Pro',450000,1,'Tenis diseñados para running profesional con amortiguación AirMax.','imagenes/productos/producto1.png'),
+(2,'Camiseta Deportiva DryFit Hombre',95000,1,'Camiseta deportiva DryFit de secado rápido para alto rendimiento.','imagenes/productos/producto2.jpg'),
+(4,'Morral Camelbak Pro 2L',220000,4,'Morral con hidratación integrada Camelbak de 2 litros para actividades deportivas.','imagenes/productos/producto4.jpg'),
+(5,'Balón Fútbol Profesional',160000,4,'Balón de fútbol profesional certificado para entrenamientos y partidos oficiales.','imagenes/productos/producto5.jpg'),
+(3,'Gorra Visera Ligera',35000,4,'Gorra ligera con visera ajustable ideal para deportes al aire libre.','imagenes/productos/producto3.jpeg'),
+(6,'Zapatillas Training PowerFlex',249900,1,'Tenis de entrenamiento con suela antideslizante y gran absorción de impacto.','imagenes/productos/H1.jpg'),
+(7,'Camiseta Compresión ProShield',89900,1,'Camiseta de compresión ideal para alto rendimiento.','imagenes/productos/H2.jpg'),
+(8,'Chaqueta Deportiva UltraWind',179900,1,'Chaqueta ligera resistente al viento.','imagenes/productos/H3.jpg'),
+(9,'Pantaloneta DryMax ComfortFit',69900,1,'Short deportivo transpirable para entrenamiento.','imagenes/productos/H4.jpg'),
+(10,'Tenis Gym Performance X3',299900,1,'Tenis diseñados para gimnasio con soporte lateral.','imagenes/productos/H5.jpg'),
+(11,'Leggings SculptFit Elevate',129900,2,'Leggings moldeadores de alta elasticidad.','imagenes/productos/M1.jpg'),
+(12,'Top Deportivo AeroSoft',69900,2,'Top con material de secado rápido AeroSoft.','imagenes/productos/M2.jpg'),
+(13,'Chaqueta Fitness BreezeLight',159900,2,'Chaqueta ligera ideal para running.','imagenes/productos/M3.jpg'),
+(14,'Camiseta Seamless Flow',79900,2,'Camiseta sin costuras ultra cómoda.','imagenes/productos/M4.jpg'),
+(15,'Tenis Running WaveMotion',289900,2,'Tenis ligeros y suaves para carreras largas.','imagenes/productos/M5.jpg'),
+(16,'Zapatillas Kids SportRunner',119900,3,'Calzado deportivo con soporte reforzado para niños.','imagenes/productos/N1.jpg'),
+(17,'Camiseta Kids Training Fresh',39900,3,'Camiseta fresca y ligera para actividad física.','imagenes/productos/N2.jpg'),
+(18,'Short Athletic JuniorFit',44900,3,'Short atlético para entrenamiento infantil.','imagenes/productos/N3.jpg'),
+(19,'Gorra Kids ActiveShield',29900,3,'Gorra ligera con protección UV.','imagenes/productos/N4.jpg'),
+(20,'Balón Fútbol Juvenil ProKick',55900,3,'Balón juvenil resistente para entrenamientos.','imagenes/productos/N5.jpg'),
+(21,'Sudadera Essential SportFit',89900,6,'Sudadera cómoda para entrenamiento y uso diario.','imagenes/productos/D1.jpg'),
+(23,'Camiseta ActiveDry Core',49900,6,'Camiseta con tecnología ActiveDry.','imagenes/productos/D3.jpg'),
+(24,'Mochila Deportiva AllTerrain',139900,6,'Mochila resistente para entrenamientos y viajes.','imagenes/productos/D4.jpg'),
+(25,'Guantes Entrenamiento GripForce',34900,6,'Guantes con agarre reforzado para gimnasio.','imagenes/productos/D5.jpg'),
+(22,'Tenis Running SpeedLite',199900,6,'Tenis ultraligeros diseñados para corredores.','imagenes/productos/D2.jfif'),
+(26,'Cuerda de Salto Pro',22000,1,'Cuerda de salto profesional para entrenamiento cardiovascular','imagenes/productos/producto14.jpg');
+
+CREATE TABLE descuentos (
+    id SERIAL PRIMARY KEY,
+    producto_id INT NOT NULL REFERENCES productos(id) ON DELETE CASCADE,
+    porcentaje DOUBLE PRECISION NOT NULL,
+    fecha_inicio DATE NOT NULL,
+    fecha_fin DATE NOT NULL
+);
+
+INSERT INTO descuentos VALUES
+(1,21,25,'2025-03-12','2025-04-12'),
+(2,22,40,'2025-03-12','2025-04-12'),
+(3,23,15,'2025-03-12','2025-04-12'),
+(4,24,30,'2025-03-12','2025-04-12'),
+(5,25,20,'2025-03-12','2025-04-12');
+
+
+CREATE TABLE carrito (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT NOT NULL REFERENCES usuarios(id),
+    fecha_actualizado TIMESTAMP DEFAULT now()
+);
+
+INSERT INTO carrito VALUES
+(1,5,'2025-12-05 20:44:09.219606'),
+(2,6,'2025-12-05 20:44:09.219606'),
+(3,2,'2025-12-05 20:44:09.219606'),
+(4,3,'2025-12-05 20:44:09.219606'),
+(5,1,'2025-12-05 20:44:09.219606');
+
+CREATE TABLE carrito_items (
+    id SERIAL PRIMARY KEY,
+    carrito_id INT NOT NULL REFERENCES carrito(id),
+    producto_id INT NOT NULL REFERENCES productos(id),
+    cantidad INT NOT NULL DEFAULT 1
+);
+
+INSERT INTO carrito_items VALUES
+(6,3,3,1),
+(7,3,7,2),
+(4,2,4,4),
+(5,2,9,4),
+(2,1,16,1),
+(1,1,15,2),
+(23,2,6,1),
+(24,2,10,1),
+(25,2,6,1),
+(26,2,1,1),
+(27,5,23,1),
+(28,2,22,1),
+(29,2,2,1);
+
+CREATE TABLE lista_deseos (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+    producto_id INT NOT NULL REFERENCES productos(id) ON DELETE CASCADE,
+    fecha_agregado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (usuario_id, producto_id)
+);
+
+INSERT INTO lista_deseos VALUES
+(2,1,3,'2025-12-03 09:58:17.263514'),
+(3,1,5,'2025-12-03 09:58:17.263514'),
+(4,2,2,'2025-12-03 09:58:25.547958'),
+(5,2,4,'2025-12-03 09:58:25.547958'),
+(6,3,3,'2025-12-03 09:58:33.278464'),
+(7,3,1,'2025-12-03 09:58:33.278464'),
+(8,1,2,'2025-12-06 10:21:58.978137'),
+(11,6,1,'2025-12-06 17:15:21.767467');
+
+CREATE TABLE pedidos (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+    fecha DATE NOT NULL,
+    total INT NOT NULL,
+    estado VARCHAR(255) NOT NULL,
+    nombre VARCHAR(255),
+    apellidos VARCHAR(255),
+    direccion VARCHAR(255),
+    departamento VARCHAR(255),
+    ciudad VARCHAR(255),
+    codigo_postal VARCHAR(255),
+    correo VARCHAR(255),
+    telefono VARCHAR(255),
+    metodo_pago VARCHAR(255),
+    notas VARCHAR(255)
+);
+
+
+CREATE TABLE pedido_items (
+    id SERIAL PRIMARY KEY,
+    pedido_id INT REFERENCES pedidos(id) ON DELETE CASCADE,
+    producto_id INT REFERENCES productos(id),
+    cantidad INT NOT NULL,
+    precio_unitario INT NOT NULL
+);
+
+
+CREATE TABLE tips_deportivos (
+    id SERIAL PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    contenido TEXT NOT NULL,
+    producto_id INT REFERENCES productos(id) ON DELETE SET NULL
+);
+
+INSERT INTO tips_deportivos VALUES
+(1,'Mejora tu pisada al correr','Usar tenis con buena amortiguación como estos reduce el impacto en tus rodillas.',1),
+(2,'Mantente seco durante tu entrenamiento','Las camisetas DryFit ayudan a evaporar el sudor rápidamente y evitan irritaciones.',2),
+(3,'Hidrátate sin detenerte','Los morrales con hidratación integrada permiten beber agua sin pausar la actividad.',4),
+(4,'Mejora tu control del balón','Un balón profesional permite entrenar precisión y potencia de forma más efectiva.',5),
+(6,'Aumenta tu estabilidad al correr','Tenis con suela antiderrapante mejoran el agarre en superficies mojadas.',7),
+(7,'Mejor circulación al entrenar','La compresión ayuda a mejorar la postura y reduce vibraciones musculares.',8),
+(12,'Mantén tu cuerpo caliente','Una sudadera ligera ayuda a mantener la temperatura sin causar sobrecalentamiento.',21),
+(14,'Corre más suave por más tiempo','Tenis diseñados para largas distancias reducen el impacto en cada paso.',15),
+(15,'Calzado seguro para los más pequeños','La amortiguación adecuada previene lesiones durante actividades infantiles.',16),
+(16,'Mantén una sensación fresca','Las camisetas para niños hechas con materiales transpirables evitan el sudor excesivo.',17),
+(17,'Mejora tus saltos','Shorts ligeros permiten mayor libertad en ejercicios explosivos.',18),
+(18,'Protege tu piel','Las gorras con filtro UV protegen contra los rayos solares durante entrenamientos al aire libre.',19),
+(19,'Perfecciona tus habilidades','Un balón de buena calidad es ideal para practicar pases y tiros con mayor precisión.',20),
+(20,'Evita lesiones en las manos','Guantes con buen agarre mejoran la estabilidad al levantar peso o usar barras.',25),
+(10,'Entrena con rapidez','Tenis diseñados para gimnasios mejoran la tracción y permiten cambios de dirección rápidos.',10),
+(13,'Evita rozaduras al entrenar','Las camisetas sin costuras son perfectas para entrenamientos largos.',14),
+(11,'Reduce la fatiga muscular','Los leggings compresivos ayudan al retorno venoso y disminuyen el cansancio.',11),
+(9,'Flexibilidad para ejercicios intensos','Los pantalones deportivos cómodos favorecen un rango de movimiento amplio.',9),
+(5,'Protege tu cabeza del sol','Las gorras ligeras evitan la fatiga causada por el calor y mejoran la ventilación.',19),
+(8,'Corre más libre con menos peso','Una chaqueta ultraligera es ideal para días fríos sin estorbar tus movimientos.',13);
